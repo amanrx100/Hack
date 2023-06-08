@@ -8,6 +8,10 @@ import { AuthProvider } from "./context/auth";
 import { SearchProvider } from "./context/search";
 import { CartProvider } from "./context/cart";
 import "antd/dist/reset.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
+// import './styles.css'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

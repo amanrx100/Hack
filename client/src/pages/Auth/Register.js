@@ -40,7 +40,7 @@ const Register = () => {
   return (
     <Layout title="Register - Ecommer App">
       <div className="form-container" style={{ minHeight: "90vh" }}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="p-5 card">
           <h4 className="title">REGISTER FORM</h4>
           <div className="mb-3">
             <input
@@ -105,7 +105,7 @@ const Register = () => {
               onChange={(e) => setAnswer(e.target.value)}
               className="form-control"
               id="exampleInputEmail1"
-              placeholder="What is Your Favorite sports"
+              placeholder="What is Your Favorite sport"
               required
             />
           </div>

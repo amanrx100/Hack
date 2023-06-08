@@ -6,10 +6,13 @@
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  justify-content: center;
+  /* justify-content: center; */
+}
+.price-color{
+   color: #ff6f61!important;
 }
 
-.product-details-info h6 {
+.product-details-info h1, h4, h6 {
   margin-bottom: 20px !important;
 }
 

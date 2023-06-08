@@ -8,6 +8,23 @@ import toast from "react-hot-toast";
 import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
+import Carousel from 'react-bootstrap/Carousel';
+import c1 from '../../src/assets/c01.jpg'
+import c2 from '../../src/assets/c02.webp'
+import c3 from '../../src/assets/c03.webp'
+import c4 from '../../src/assets/c04.jpg'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import anime1 from '../../src/assets/anime1.webp'
+import oversized1 from '../../src/assets/oversized2.jpg'
+import men from '../../src/assets/men.png'
+import women from '../../src/assets/women.png'
+import FreeShipping from '../../src/assets/footerdesktop-strip.jpg'
+import shopmw from '../../src/assets/shopmw.png'
+import naruto from '../../src/assets/carosel1.webp'
+import { NavLink} from "react-router-dom";
+import Slider from "../components/Slider";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -109,14 +126,42 @@ const HomePage = () => {
   return (
     <Layout title={"ALl Products - Best offers "}>
       {/* banner image */}
-      <img
-        src="/images/banner.png"
-        className="banner-img"
-        alt="bannerimage"
-        width={"100%"}
-      />
+      <Carousel
+        autoPlay={true}
+        autoPlaySpeed={1000}
+      >
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={c1}
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={c2}
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={c3}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={c4}
+            alt="Third slide"
+          />
+        </Carousel.Item>
+      </Carousel>
       {/* banner image */}
-      <div className="container-fluid row mt-3 home-page">
+
+      {/* <div className="container-fluid row mt-3 home-page">
         <div className="col-md-3 filters">
           <h4 className="text-center">Filter By Category</h4>
           <div className="d-flex flex-column">
@@ -129,7 +174,7 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
-          {/* price filter */}
+
           <h4 className="text-center mt-4">Filter By Price</h4>
           <div className="d-flex flex-column">
             <Radio.Group onChange={(e) => setRadio(e.target.value)}>
@@ -218,8 +263,32 @@ const HomePage = () => {
             )}
           </div>
         </div>
-      </div>
+      </div> */}
+
+      {/* Categories  */}
+      <Container className='my-32'>
+        <h1 className='text-center text-5xl fw-bold my-5'>Trending Categories</h1>
+        <Row className='w-75 d-flex align-items-center justify-content-center mx-auto gap-5'>
+          <Col><img src={anime1} alt='anime' className="w-100" /><h1 className='text-center fs-2 fw-bold mt-2'>Anime T-Shirt</h1></Col>
+          <Col><img src={oversized1} alt='oversized' className="w-100" /><h1 className='text-center fs-2 fw-bold mt-2'>Oversized T-Shirt</h1></Col>
+        </Row>
+      </Container>
+
+      <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
+        <img src={shopmw} alt='shop'className="d-flex w-100"/>
+     </div>
+
+     <Slider />
+
+     <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
+        <img src={naruto} alt='shop'className="d-flex w-100"/>
+     </div>
+     <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
+        <img src={FreeShipping} alt='shop'className="d-flex w-100"/>
+     </div>
     </Layout>
+
+
   );
 };
 

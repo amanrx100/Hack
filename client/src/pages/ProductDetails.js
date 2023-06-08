@@ -3,8 +3,14 @@ import Layout from "./../components/Layout/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/ProductDetailsStyles.css";
+import Button from 'react-bootstrap/Button';
+import {FiShoppingBag} from 'react-icons/fi'
+import { toast } from "react-hot-toast";
+import { useCart } from "../context/cart";
+
 
 const ProductDetails = () => {
+  const [cart, setCart] = useCart();
   const params = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState({});
@@ -39,35 +45,47 @@ const ProductDetails = () => {
   };
   return (
     <Layout>
-      <div className="row container product-details">
+      <div className="my-5">
+         <hr className="my-5"/>
+      </div>
+      <div className="row container product-details w-75 d-flex justify-content-center mx-auto">
         <div className="col-md-6">
           <img
             src={`/api/v1/product/product-photo/${product._id}`}
             className="card-img-top"
             alt={product.name}
-            height="300"
-            width={"350px"}
+            
           />
         </div>
-        <div className="col-md-6 product-details-info">
-          <h1 className="text-center">Product Details</h1>
-          <hr />
-          <h6>Name : {product.name}</h6>
-          <h6>Description : {product.description}</h6>
-          <h6>
-            Price :
+        <div className="col-md-6 product-details-info ">
+          <h1> {product.name}</h1>
+          {/* <hr /> */}
+          <h4 className="price-color">
+            
             {product?.price?.toLocaleString("en-US", {
               style: "currency",
-              currency: "USD",
+              currency: "INR",
             })}
-          </h6>
-          <h6>Category : {product?.category?.name}</h6>
-          <button class="btn btn-secondary ms-1">ADD TO CART</button>
+          </h4>
+            <h6>{product.description}</h6>
+          <h6>{product?.category?.name}</h6>
+          {/* <Button variant="danger" className="fw-bold"><FiShoppingBag className="me-2"/>ADD TO BAG</Button> */}
+          <button
+            className="btn btn-danger fw-bold"
+            onClick={() => {
+              setCart([...cart, product]);
+              localStorage.setItem("cart", JSON.stringify([...cart, product]));
+              toast.success("Item Added to cart");
+            }}
+          >
+            <FiShoppingBag className="me-2"/>
+            ADD TO CART
+          </button>
         </div>
       </div>
       <hr />
-      <div className="row container similar-products">
-        <h4>Similar Products ➡️</h4>
+      <div className=" my-5 row container similar-products d-flex mx-auto justify-content-center ">
+        <h4 className=" text-center">You Might Also Like</h4>
         {relatedProducts.length < 1 && (
           <p className="text-center">No Similar Products found</p>
         )}

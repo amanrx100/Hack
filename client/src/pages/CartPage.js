@@ -26,7 +26,7 @@ const CartPage = () => {
       });
       return total.toLocaleString("en-US", {
         style: "currency",
-        currency: "USD",
+        currency: "INR",
       });
     } catch (error) {
       console.log(error);
@@ -82,42 +82,43 @@ const CartPage = () => {
       <div className=" cart-page">
         <div className="row">
           <div className="col-md-12">
-            <h1 className="text-center bg-light p-2 mb-1">
+            <h2 className="text-center p-2 mb-1">
               {!auth?.user
                 ? "Hello Guest"
                 : `Hello  ${auth?.token && auth?.user?.name}`}
-              <p className="text-center">
+              <p className="text-center fs-4">
                 {cart?.length
                   ? `You Have ${cart.length} items in your cart ${
                       auth?.token ? "" : "please login to checkout !"
                     }`
                   : " Your Cart Is Empty"}
               </p>
-            </h1>
+            </h2>
+            <hr/>
           </div>
         </div>
         <div className="container ">
           <div className="row ">
-            <div className="col-md-7  p-0 m-0">
+            <div className="col-md-7 p-0 m-0">
               {cart?.map((p) => (
-                <div className="row card flex-row" key={p._id}>
+                <div className="row flex-row border p-2 m-2" key={p._id}>
                   <div className="col-md-4">
                     <img
                       src={`/api/v1/product/product-photo/${p._id}`}
                       className="card-img-top"
                       alt={p.name}
                       width="100%"
-                      height={"130px"}
+                      height={"100%"}
                     />
                   </div>
                   <div className="col-md-4">
-                    <p>{p.name}</p>
-                    <p>{p.description.substring(0, 30)}</p>
-                    <p>Price : {p.price}</p>
+                    <h4>{p.name}</h4>
+                    <p className="">{p.description.substring(0, 30)}</p>
+                    <h5>Price : Rs {p.price}</h5>
                   </div>
                   <div className="col-md-4 cart-remove-btn">
                     <button
-                      className="btn btn-danger"
+                      className="btn btn-outline-success"
                       onClick={() => removeCartItem(p._id)}
                     >
                       Remove
@@ -126,7 +127,7 @@ const CartPage = () => {
                 </div>
               ))}
             </div>
-            <div className="col-md-5 cart-summary ">
+            <div className="col-md-5 border mt-2 py-3 cart-summary ">
               <h2>Cart Summary</h2>
               <p>Total | Checkout | Payment</p>
               <hr />
@@ -137,7 +138,7 @@ const CartPage = () => {
                     <h4>Current Address</h4>
                     <h5>{auth?.user?.address}</h5>
                     <button
-                      className="btn btn-outline-warning"
+                      className="btn btn-outline-dark border-none"
                       onClick={() => navigate("/dashboard/user/profile")}
                     >
                       Update Address
@@ -183,7 +184,7 @@ const CartPage = () => {
                     />
 
                     <button
-                      className="btn btn-primary"
+                      className="btn btn-success py-2 px-5"
                       onClick={handlePayment}
                       disabled={loading || !instance || !auth?.user?.address}
                     >

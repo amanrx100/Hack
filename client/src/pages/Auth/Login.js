@@ -40,8 +40,8 @@ const Login = () => {
   };
   return (
     <Layout title="Register - Ecommer App">
-      <div className="form-container " style={{ minHeight: "90vh" }}>
-        <form onSubmit={handleSubmit}>
+      <div className="form-container" >
+        <form onSubmit={handleSubmit} className="p-5 card ">
           <h4 className="title">LOGIN FORM</h4>
 
           <div className="mb-3">
