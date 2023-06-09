@@ -24,7 +24,8 @@ import FreeShipping from '../../src/assets/footerdesktop-strip.jpg'
 import shopmw from '../../src/assets/shopmw.png'
 import naruto from '../../src/assets/carosel1.webp'
 import { NavLink} from "react-router-dom";
-import Slider from "../components/Slider";
+import Slider01 from "../components/Slider/Slider01";
+import Slider02 from "../components/Slider/Slider02";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -275,17 +276,20 @@ const HomePage = () => {
       </Container>
 
       <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
-        <img src={shopmw} alt='shop'className="d-flex w-100"/>
+        <img src={shopmw} alt='shop'className="d-flex w-100 my-5"/>
      </div>
 
-     <Slider />
+     <Slider01 />
 
      <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
-        <img src={naruto} alt='shop'className="d-flex w-100"/>
+        <img src={naruto} alt='shop'className="d-flex w-100  my-5"/>
      </div>
+       <Slider02 />
      <div className='d-flex align-items-center justify-content-center mx-auto my-5'>
         <img src={FreeShipping} alt='shop'className="d-flex w-100"/>
      </div>
+       
+
     </Layout>
 
 
